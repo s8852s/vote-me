@@ -22,7 +22,6 @@ class CandidatesController < ApplicationController
 		else
 			#NG
 			render :new
-
 		end
 	end
 
@@ -34,7 +33,7 @@ class CandidatesController < ApplicationController
 		@candidate = Candidate.find_by(id: params[:id])
 
 		if @candidate.update(candidate_params)
-			flash[:note] = "Candidate update!"
+			flash[:notice] = "Candidate update"
 			redirect_to "/candidates"
 			else
 				render :edit
@@ -46,10 +45,20 @@ class CandidatesController < ApplicationController
 		@candidate = Candidate.find_by(id: params[:id])
 		@candidate.destroy
 
-		flash[:note] = "Candidate delete!"
+		flash[:notice] = "Candidate deleted!"
 			redirect_to "/candidates"
 
 	end
+
+	def vote
+		@candidate = Candidate.find_by(id: params[:id])
+		@candidate.increment(:votes)
+		@candidate.save
+
+		flash[:notice] = "voted!"
+			redirect_to "/candidates"
+	end
+
 
 
 		
