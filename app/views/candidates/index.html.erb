@@ -24,6 +24,10 @@
 		<td><%= candidate.age %></td>
 		<td>
 			<%= link_to "update", edit_candidate_path(candidate.id) %>
+			<%= link_to "delete", candidate_path(candidate.id), method: "delete", data: {confirm: "are you sure?"} %>
+		</td>
+		<td>
+
 		</td>
 	</tr>
 	<% end %>
