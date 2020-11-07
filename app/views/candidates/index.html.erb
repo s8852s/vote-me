@@ -7,23 +7,24 @@
 <!-- <a href="/candidates/new">Add Candidate</a> -->
 
 <table>
-    <tr>
-        <td>Name</td>
-        <td>Party</td>
-        <td>Age</td>
-        <!-- <td>Politics</td> -->
-        <td>Action</td>
-    </tr>
+	<tr>
+		<td>Name</td>
+		<td>Party</td>
+		<td>Age</td>
+		<!-- <td>Politics</td> -->
+		<td>Action</td>
+	</tr>
 
-    <% @candidates.each do |candidate| %>
+	<% @candidates.each do |candidate| %>
 
 
-    <tr>
-        <td><%= link_to candidate.name, candidate_path(candidate.id) %></a></td>
-        <td><%= candidate.party %></td>
-        <td><%= candidate.age %></td>
-        <!-- <td><%= candidate.politics %></td> -->
-        <td>Action</td>
-    </tr>
-    <% end %>
+	<tr>
+		<td><%= link_to candidate.name, candidate_path(candidate.id) %></a></td>
+		<td><%= candidate.party %></td>
+		<td><%= candidate.age %></td>
+		<td>
+			<%= link_to "update", edit_candidate_path(candidate.id) %>
+		</td>
+	</tr>
+	<% end %>
 </table>
